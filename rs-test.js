@@ -1555,12 +1555,12 @@ currenttimebtn = $('<button id="findtime" class="btn btn-xs btn-default" title="
 		}
 });
 
-$('<span id="maxusers" title="Maximum Flappers">' + MAXUSERS + ' max flappers</span>')
+$('<span id="maxusers" title="Maximum Shoujos">' + MAXUSERS + ' max butai shoujos</span>')
 	.appendTo("#chatheader")
 
 Callbacks.usercount = function(count) {
         CHANNEL.usercount = count;
-        var text = count + " flapper";
+        var text = count + " butai shoujo";
         if(count != 1) {
             text += "s";
         }
@@ -1568,7 +1568,7 @@ Callbacks.usercount = function(count) {
 
 	if (MAXUSERS < count) {
 		MAXUSERS = count;
-		$("#maxusers").text(MAXUSERS + " max flapper");
+		$("#maxusers").text(MAXUSERS + " max butai shoujo");
 		setOpt(CHANNEL.name + "_MAXUSERS" + (new Date().getFullYear()), MAXUSERS);
 	}
 };
