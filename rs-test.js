@@ -797,7 +797,7 @@ if (USEROPTS.hidevid) {
 }
 
 //Team Colour
-$('head').append('<script type="text/javascript" src="' + `${SCRIPT_FOLDER_URL}/ffteamcolor.js` + '">');
+$('head').append('<script type="text/javascript" src="' + `${SCRIPT_FOLDER_URL}/rsteamcolor.js` + '">');
 
 // changing initial layout to compact
 $("body").addClass('fluid');
