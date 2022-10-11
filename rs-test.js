@@ -24,7 +24,7 @@ SCRIPT_FOLDER_URL = SCRIPT_FOLDER_URL.join('/');
 
 var adPercent = 0.1;
 
-var Favicon_URL = `${SCRIPT_FOLDER_URL}/Images/uex.png`;
+var Favicon_URL = `${SCRIPT_FOLDER_URL}/Images/kirin.png`;
 
 var ChannelName_Caption = "Let's Flip Flapping!";
 
