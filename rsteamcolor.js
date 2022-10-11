@@ -1,4 +1,4 @@
-var teamList_4cc = ["karen","hikari","mahiru","caludine","maya","junna","nana","futaba","kaoruko"];
+var teamList_4cc = ["karen","hikari","mahiru","claudine","maya","junna","nana","futaba","kaoruko"];
 
 
 function setTeamList(listOfTeams){
