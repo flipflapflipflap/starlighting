@@ -171,23 +171,16 @@ footer {padding-bottom:5px}
 }
 
 /*Reddit flair*/
-.username::before{background:url('./Images/uex.png');}
-.teampapika::before{background:url('./Images/papika.png');}
-.teamcocona::before{background:url('./Images/cocona.png');}
-.teamyayaka::before{background:url('./Images/yayaka.png');}
-.teamtt392::before{background:url('./Images/tt392.png');}
-.teamsalt::before{background:url('./Images/salt.png');}
-.teamhidaka::before{background:url('./Images/hidaka.png');}
-.teamsayuri::before{background:url('./Images/sayuri.png');}
-.teamtoto::before{background:url('./Images/toto.png');}
-.teamyuyu::before{background:url('./Images/yuyu.png');}
-.teamnyunyu::before{background:url('./Images/nyunyu.png');}
-.teammimi::before{background:url('./Images/mimi.png');}
-.teamiroha::before{background:url('./Images/iroha.png');}
-.teamwelwitschia::before{background:url('./Images/welwitschia.png');}
-.teamocchan::before{background:url('./Images/occhan.png');}
-.teamgranny::before{background:url('./Images/granny.png');}
-.teamgrandwizard::before{background:url('./Images/grandwizard.png');}
+.username::before{background:url('./Images/kirin.png');}
+.teamkaren::before{background:url('./Images/karen.png');}
+.teamhikari::before{background:url('./Images/hikari.png');}
+.teammahiru::before{background:url('./Images/mahiru.png');}
+.teamclaudine::before{background:url('./Images/claudine.png');}
+.teammaya::before{background:url('./Images/maya.png');}
+.teamjunna::before{background:url('./Images/junna.png');}
+.teamnana::before{background:url('./Images/nana.png');}
+.teamfutaba::before{background:url('./Images/futaba.png');}
+.teamkaoruko::before{background:url('./Images/kaoruko.png');}
 
 .username::before{
 	content:"AA";
