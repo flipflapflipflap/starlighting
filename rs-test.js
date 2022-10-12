@@ -2264,16 +2264,16 @@ if (Math.abs(timeDiff) < 1000) {
 
 
 function countdown (element) {
-	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayoffset = 8,  timeoffset = 12, temp, isFlapping = false, OctobHour = 0, starttime = 7;
+	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayoffset1 = 3,  timeoffset = 12, temp, isStarlighting = false, JuneHour = 0, starttime = 7;
 	//var month = 0, day = 0, hour = 0, minute = 0, seconds = 0;
-	element.append('<h3 id="countdowntitle" align="center">Countdown to October</h3>');
+	element.append('<h3 id="countdowntitle" align="center">Countdown to June</h3>');
 	element.append('<h1 id="countdown" align="center">' + Month + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds + '</h1>');
 
 	var fieldNameElement = document.getElementById('countdowntitle');
 
 	setInterval(function () { //updates every second
 		time();
-		FlipFlapping();
+		Starlighting();
 		make();
 	}, 1000);
 
@@ -2294,29 +2294,29 @@ function countdown (element) {
 		minute = D.getUTCMinutes();
 		second = D.getUTCSeconds();
 
-		Month = 10 - month;
+		Month = 6 - month;
 		Day = daysInMonth(month, year) - day;
 		Hour = 23 - hour;
-		OctobHour = (dayoffset-day)*24 - hour + starttime -1;
+		JuneHour = (dayoffset1-day)*24 - hour + starttime -1;
 		Minute = 59 - minute;
 		Seconds = 59 - second;
 	}
 
-	function FlipFlapping() {
-		if (isFlapping === false && Hour === (24-timeoffset) && Month === 0 && Day >= 6) {
-			isFlapping = true;
+	function Starlighting() {
+		if (isStarlighting === false && Hour === (24-timeoffset) && Month === 0 && Day >= 6) {
+			isStarlighting = true;
 		}
-		if (isFlapping === true && Hour !== (24-timeoffset)) {
-			isFlapping = false;
+		if (isStarlighting === true && Hour !== (24-timeoffset)) {
+			isStarlighting = false;
 		}
 	}
 
 	function make() { //checks the numbers then applies
-		if(Month < 10) Month = '0' + Month;
-		if(Day < 10) Day = '0' + Day;
-		if(Hour < 10) Hour = '0' + Hour;
-		if(Minute < 10) Minute = '0' + Minute;
-		if(Seconds < 10) Seconds = '0' + Seconds;//these lines add a 0 if it's less than 10
+		if(Month < 6) Month = '0' + Month;
+		if(Day < 6) Day = '0' + Day;
+		if(Hour < 6) Hour = '0' + Hour;
+		if(Minute < 6) Minute = '0' + Minute;
+		if(Seconds < 6) Seconds = '0' + Seconds;//these lines add a 0 if it's less than 10
 
 		//check if time is reasonable. if not gtfo
 		if (Hour > 23 || Minute > 59) {
@@ -2325,25 +2325,42 @@ function countdown (element) {
 			cdtext = Month - 1 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 		}
 		else if (Month == 0) {
-			if (31 - dayoffset > Day) {
-						fieldNameElement.innerHTML = "Countdown to (next) October:";
+			if (30 - dayoffset1 > Day) {
+						fieldNameElement.innerHTML = "Countdown to (next) June:";
 						cdtext = 11 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-					} else if ((31 - dayoffset == Day) && Hour < (24 - 7)) {
+					} else if ((30 - dayoffset1 == Day) && Hour < (24 - 7)) {
 						fieldNameElement.innerHTML = "";
 						cdtext = "THE TIME HAS COME";
 					} else {
-							temp = dayoffset - day;
+							temp = dayoffset1 - day;
 							temp = '0' + temp;
-							fieldNameElement.innerHTML = "Flip Flapping in:";
-							cdtext = OctobHour + ' : ' + Minute + ' : ' + Seconds;
+							fieldNameElement.innerHTML = "Starlighting in:";
+							cdtext = JuneHour + ' : ' + Minute + ' : ' + Seconds;
 					}
 		}
 		else {
 			if (Month == -1){
 			cdtext = 10 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
-			else{
+
+			else if (Month == -2){
 			cdtext = 09 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+
+			else if (Month == -3){
+			cdtext = 08 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+
+			else if (Month == -4){
+			cdtext = 07 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+
+			else if (Month == -5){
+			cdtext = 06 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+																					
+			else{
+			cdtext = 05 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 
 			}
 			
