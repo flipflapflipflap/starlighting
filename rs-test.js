@@ -26,7 +26,7 @@ var adPercent = 0.1;
 
 var Favicon_URL = `${SCRIPT_FOLDER_URL}/Images/kirin.png`;
 
-var ChannelName_Caption = "Wakarimasu.";
+var ChannelName_Caption = "Wakarimasu";
 
 var TitleBarDescription_Caption = '>Streaming:';
 
