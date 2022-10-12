@@ -2312,11 +2312,11 @@ function countdown (element) {
 	}
 
 	function make() { //checks the numbers then applies
-		if(Month < 6) Month = 0 + Month;
-		if(Day < 6) Day = '0' + Day;
-		if(Hour < 6) Hour = '0' + Hour;
-		if(Minute < 6) Minute = '0' + Minute;
-		if(Seconds < 6) Seconds = '0' + Seconds;//these lines add a 0 if it's less than 10
+		if(Month < 10 && Month >= 0) Month = '0' + Month;
+		if(Day < 10) Day = '0' + Day;
+		if(Hour < 10) Hour = '0' + Hour;
+		if(Minute < 10) Minute = '0' + Minute;
+		if(Seconds < 10) Seconds = '0' + Seconds;//these lines add a 0 if it's less than 10
 
 		//check if time is reasonable. if not gtfo
 		if (Hour > 23 || Minute > 59) {
