@@ -24,9 +24,9 @@ SCRIPT_FOLDER_URL = SCRIPT_FOLDER_URL.join('/');
 
 var adPercent = 0.1;
 
-var Favicon_URL = `${SCRIPT_FOLDER_URL}/Images/uex.png`;
+var Favicon_URL = `${SCRIPT_FOLDER_URL}/Images/kirin.png`;
 
-var ChannelName_Caption = "Wakarimasu.";
+var ChannelName_Caption = "Wakarimasu";
 
 var TitleBarDescription_Caption = '>Streaming:';
 
@@ -797,7 +797,7 @@ if (USEROPTS.hidevid) {
 }
 
 //Team Colour
-$('head').append('<script type="text/javascript" src="' + `${SCRIPT_FOLDER_URL}/ffteamcolor.js` + '">');
+$('head').append('<script type="text/javascript" src="' + `${SCRIPT_FOLDER_URL}/rsteamcolor.js` + '">');
 
 // changing initial layout to compact
 $("body").addClass('fluid');
@@ -1555,12 +1555,12 @@ currenttimebtn = $('<button id="findtime" class="btn btn-xs btn-default" title="
 		}
 });
 
-$('<span id="maxusers" title="Maximum Flappers">' + MAXUSERS + ' max flappers</span>')
+$('<span id="maxusers" title="Maximum Shoujos">' + MAXUSERS + ' max butai shoujos</span>')
 	.appendTo("#chatheader")
 
 Callbacks.usercount = function(count) {
         CHANNEL.usercount = count;
-        var text = count + " flapper";
+        var text = count + " butai shoujo";
         if(count != 1) {
             text += "s";
         }
@@ -1568,7 +1568,7 @@ Callbacks.usercount = function(count) {
 
 	if (MAXUSERS < count) {
 		MAXUSERS = count;
-		$("#maxusers").text(MAXUSERS + " max flapper");
+		$("#maxusers").text(MAXUSERS + " max butai shoujo");
 		setOpt(CHANNEL.name + "_MAXUSERS" + (new Date().getFullYear()), MAXUSERS);
 	}
 };
@@ -2264,16 +2264,16 @@ if (Math.abs(timeDiff) < 1000) {
 
 
 function countdown (element) {
-	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayoffset = 7,  timeoffset = 12, temp, isFlapping = false, OctobHour = 0, starttime = 19;
+	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayoffset1 = 3,  dayoffset2 = 10,  timeoffset = 12, temp, isStarlighting = false, JuneHour = 0, starttime = 7;
 	//var month = 0, day = 0, hour = 0, minute = 0, seconds = 0;
-	element.append('<h3 id="countdowntitle" align="center">Countdown to October</h3>');
+	element.append('<h3 id="countdowntitle" align="center">Countdown to June</h3>');
 	element.append('<h1 id="countdown" align="center">' + Month + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds + '</h1>');
 
 	var fieldNameElement = document.getElementById('countdowntitle');
 
 	setInterval(function () { //updates every second
 		time();
-		FlipFlapping();
+		Starlighting();
 		make();
 	}, 1000);
 
@@ -2294,25 +2294,25 @@ function countdown (element) {
 		minute = D.getUTCMinutes();
 		second = D.getUTCSeconds();
 
-		Month = 10 - month;
+		Month = 6 - month;
 		Day = daysInMonth(month, year) - day;
 		Hour = 23 - hour;
-		OctobHour = (dayoffset-day)*24 - hour + starttime -1;
+		JuneHour = (dayoffset1-day)*24 - hour + starttime -1;
 		Minute = 59 - minute;
 		Seconds = 59 - second;
 	}
 
-	function FlipFlapping() {
-		if (isFlapping === false && Hour === (24-timeoffset) && Month === 0 && Day >= 6) {
-			isFlapping = true;
+	function Starlighting() {
+		if (isStarlighting === false && Hour === (24-timeoffset) && Month === 0 && Day >= 6) {
+			isStarlighting = true;
 		}
-		if (isFlapping === true && Hour !== (24-timeoffset)) {
-			isFlapping = false;
+		if (isStarlighting === true && Hour !== (24-timeoffset)) {
+			isStarlighting = false;
 		}
 	}
 
 	function make() { //checks the numbers then applies
-		if(Month < 10) Month = '0' + Month;
+		if(Month < 10 && Month >= 0) Month = '0' + Month;
 		if(Day < 10) Day = '0' + Day;
 		if(Hour < 10) Hour = '0' + Hour;
 		if(Minute < 10) Minute = '0' + Minute;
@@ -2325,25 +2325,49 @@ function countdown (element) {
 			cdtext = Month - 1 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 		}
 		else if (Month == 0) {
-			if (31 - dayoffset > Day) {
-						fieldNameElement.innerHTML = "Countdown to (next) October:";
+			if (30 - dayoffset2 > Day) {
+						fieldNameElement.innerHTML = "Countdown to (next) June:";
 						cdtext = 11 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-					} else if ((31 - dayoffset == Day) && Hour < (24 - 19)) {
+					} else if (((30 - dayoffset1 == Day) && Hour < (24 - 7)) || ((30 - dayoffset2 == Day) && Hour < (24 - 7))) {
 						fieldNameElement.innerHTML = "";
 						cdtext = "THE TIME HAS COME";
-					} else {
-							temp = dayoffset - day;
+					} else if (30 - dayoffset1 <= Day){
+							temp = dayoffset1 - day;
 							temp = '0' + temp;
-							fieldNameElement.innerHTML = "Flip Flapping in:";
-							cdtext = OctobHour + ' : ' + Minute + ' : ' + Seconds;
+							fieldNameElement.innerHTML = "Starlighting in:";
+							cdtext = JuneHour + ' : ' + Minute + ' : ' + Seconds;
 					}
+					 else {
+							temp = dayoffset2 - day;
+							temp = '0' + temp;
+							fieldNameElement.innerHTML = "Starlighting to resume in:";
+							cdtext = JuneHour + ' : ' + Minute + ' : ' + Seconds;
+					}			
+			
 		}
 		else {
 			if (Month == -1){
 			cdtext = 10 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
-			else{
+
+			else if (Month == -2){
 			cdtext = 09 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+
+			else if (Month == -3){
+			cdtext = 08 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+
+			else if (Month == -4){
+			cdtext = 07 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+
+			else if (Month == -5){
+			cdtext = 06 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			}
+																					
+			else{
+			cdtext = 05 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 
 			}
 			
