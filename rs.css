@@ -39,7 +39,7 @@ Fuck Firefox */
 
 /* Track */
 ::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(255,153,0,0);
+    -webkit-box-shadow: inset 0 0 6px rgba(231, 39, 63, 0);
     border-radius: 0px;
     background-color: #161a20;
 }
@@ -47,11 +47,11 @@ Fuck Firefox */
 /* Handle */
 ::-webkit-scrollbar-thumb {
     border-radius: 0px;
-    background: rgba(255,153,0,1);
-    box-shadow: inset 0 0 6px rgba(255,153,0,0.5);
+    background: rgba(231, 39, 63, 1);
+    box-shadow: inset 0 0 6px rgba(231, 39, 63, 0.5);
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(255,153,0,0.6);
+    background: rgba(231, 39, 63, 0.6);
 }
 
 
