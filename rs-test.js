@@ -2264,7 +2264,7 @@ if (Math.abs(timeDiff) < 1000) {
 
 
 function countdown (element) {
-	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayoffset1 = 3,  timeoffset = 12, temp, isStarlighting = false, JuneHour = 0, starttime = 7;
+	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayoffset1 = 3,  dayoffset2 = 10,  timeoffset = 12, temp, isStarlighting = false, JuneHour = 0, starttime = 7;
 	//var month = 0, day = 0, hour = 0, minute = 0, seconds = 0;
 	element.append('<h3 id="countdowntitle" align="center">Countdown to June</h3>');
 	element.append('<h1 id="countdown" align="center">' + Month + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds + '</h1>');
@@ -2325,18 +2325,25 @@ function countdown (element) {
 			cdtext = Month - 1 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 		}
 		else if (Month == 0) {
-			if (30 - dayoffset1 > Day) {
+			if (30 - dayoffset2 > Day) {
 						fieldNameElement.innerHTML = "Countdown to (next) June:";
 						cdtext = 11 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-					} else if ((30 - dayoffset1 == Day) && Hour < (24 - 7)) {
+					} else if (((30 - dayoffset1 == Day) && Hour < (24 - 7)) || ((30 - dayoffset2 == Day) && Hour < (24 - 7))) {
 						fieldNameElement.innerHTML = "";
 						cdtext = "THE TIME HAS COME";
-					} else {
+					} else if (30 - dayoffset1 <= Day){
 							temp = dayoffset1 - day;
 							temp = '0' + temp;
 							fieldNameElement.innerHTML = "Starlighting in:";
 							cdtext = JuneHour + ' : ' + Minute + ' : ' + Seconds;
 					}
+					 else {
+							temp = dayoffset2 - day;
+							temp = '0' + temp;
+							fieldNameElement.innerHTML = "Starlighting to resume in:";
+							cdtext = JuneHour + ' : ' + Minute + ' : ' + Seconds;
+					}			
+			
 		}
 		else {
 			if (Month == -1){
