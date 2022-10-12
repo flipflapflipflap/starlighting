@@ -2339,6 +2339,7 @@ function countdown (element) {
 					}
 		}
 		else {
+			console.error(Month);
 			if (Month == -1){
 			cdtext = 10 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
