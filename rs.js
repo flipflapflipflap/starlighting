@@ -26,7 +26,7 @@ var adPercent = 0.1;
 
 var Favicon_URL = `${SCRIPT_FOLDER_URL}/Images/uex.png`;
 
-var ChannelName_Caption = "Let's Flip Flapping!";
+var ChannelName_Caption = "wakarimasu";
 
 var TitleBarDescription_Caption = '>Streaming:';
 
