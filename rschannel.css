@@ -45,9 +45,15 @@ footer
 
 /*Alternate message backgrounds*/
 #messagebuffer {background-color:rgba(15.3,16.9,18.8,.98);}
+
+/* #messagebuffer div:nth-child(even) {background-color:rgba(22.7,22.7,22.7,.98);} */
+/* #messagebuffer div:nth-child(odd) {background-color:rgba(15.3,16.9,18.8,.98);} */
+
 #messagebuffer div:nth-child(even) {background-color:rgba(22.7,22.7,22.7,.98);}
 #messagebuffer div:nth-child(odd) {background-color:rgba(15.3,16.9,18.8,.98);}
-#messagebuffer div.nick-hover{ background-color:rgba(22.5,12.6,11.6,.99);}
+
+
+#messagebuffer div.nick-hover{ background-color:rgba(90.6,15.3,24.7,.4);}
 #messagebuffer div.nick-highlight, #messagebuffer div.nick-highlight > a{ color: #FFFFFF;}
 
 #userlist {
