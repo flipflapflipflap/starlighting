@@ -2340,23 +2340,23 @@ function countdown (element) {
 		}
 		else {
 			console.error(Month);
-			if (Month === -1){
+			if (Month == -1){
 			cdtext = 10 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
 
-			else if (Month === -2){
+			else if (Month == -2){
 			cdtext = 09 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
 
-			else if (Month === -3){
+			else if (Month == -3){
 			cdtext = 08 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
 
-			else if (Month === -4){
+			else if (Month == -4){
 			cdtext = 07 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
 
-			else if (Month === -5){
+			else if (Month == -5){
 			cdtext = 06 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
 			}
 																					
