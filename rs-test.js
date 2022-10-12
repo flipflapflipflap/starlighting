@@ -2294,7 +2294,7 @@ function countdown (element) {
 		minute = D.getUTCMinutes();
 		second = D.getUTCSeconds();
 
-		Month = 10 - month;
+		Month = 6 - month;
 		Day = daysInMonth(month, year) - day;
 		Hour = 23 - hour;
 		JuneHour = (dayoffset1-day)*24 - hour + starttime -1;
@@ -2312,7 +2312,7 @@ function countdown (element) {
 	}
 
 	function make() { //checks the numbers then applies
-		if(Month < 6) Month = '0' + Month;
+		if(Month < 6) Month = 0 + Month;
 		if(Day < 6) Day = '0' + Day;
 		if(Hour < 6) Hour = '0' + Hour;
 		if(Minute < 6) Minute = '0' + Minute;
