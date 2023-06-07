@@ -2336,13 +2336,13 @@ function countdown (element) {
 							temp = dayoffset1 - day;
 							temp = '0' + temp;
 							fieldNameElement.innerHTML = "Starlighting in:";
-							cdtext = temp + ' : ' + ( JuneHour1 % 24 ) ' : ' + Minute + ' : ' + Seconds;
+							cdtext = JuneHour1 + ' : ' + Minute + ' : ' + Seconds;
 					}
 					 else {
 							temp = dayoffset2 - day;
 							temp = '0' + temp;
 							fieldNameElement.innerHTML = "Starlighting to resume in:";
-							cdtext = temp + ' : ' + ( JuneHour2 % 24 ) + ' : ' + Minute + ' : ' + Seconds;
+							cdtext = JuneHour2 + ' : ' + Minute + ' : ' + Seconds;
 					}			
 			
 		}
