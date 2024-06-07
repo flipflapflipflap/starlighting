@@ -1555,7 +1555,7 @@ currenttimebtn = $('<button id="findtime" class="btn btn-xs btn-default" title="
 		}
 });
 
-$('<span id="maxusers" title="Maximum Shoujos">' + ' ' + MAXUSERS + ' max butai shoujos </span>')
+$('<span id="maxusers" title="Maximum Shoujos">' + MAXUSERS + ' max butai shoujos</span>')
 	.appendTo("#chatheader")
 
 Callbacks.usercount = function(count) {
