@@ -1671,7 +1671,7 @@ $(document).keydown(function(event) {
 	var tag = {}; tag.wrap = false; tag.braced = false;
 	switch (event.which) {
 		case 83:
-			tag.code   = 'spoiler';
+			tag.code   = 'sp';
 			tag.wrap   = true;
 			tag.braced = true;
 			break;
@@ -2411,6 +2411,7 @@ socket.on('setMotd', function (data) {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+
 function formatChatMessage(data, last) {
 	if (data.msg.indexOf('/reload') === 0) {
 		document.querySelectorAll("#userlist .userlist_owner,#userlist .userlist_siteadmin").forEach(function(currentAdmins) {
@@ -2480,12 +2481,12 @@ function formatChatMessage(data, last) {
 
 			var noHTMLMsg = data.msg.replace(/<.+?>/gi," ");
 			var splitMsg = noHTMLMsg.split(" ");
-			for (var iChar = 0; iChar < splitMsg.length; iChar++) {
-				if (splitMsg[iChar].length > 25) {
-					data.msg = data.msg.substring(0, 25 + greaterThanSign);
-					break;
-				}
-			}
+			//for (var iChar = 0; iChar < splitMsg.length; iChar++) {
+				//if (splitMsg[iChar].length > 25) {
+					//data.msg = data.msg.substring(0, 25 + greaterThanSign);
+					//break;
+				//}
+			//}
 		}
 //	}
     last.name = data.username;
@@ -2851,6 +2852,7 @@ class CustomTextTriggers {
 
 
 CustomTextTriggers.init();
+
 
 
 
