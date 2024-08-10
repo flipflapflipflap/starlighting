@@ -2331,7 +2331,7 @@ function countdown (element) {
 		}		
 
 		// Is month really needed? Take it out later
-		Month = monthoffsetMP - month;
+		Month = monthoffset - month;
 		Day = daysInMonth(month, year) - day;
 		Hour = 23 - hour;
 		Minute = 59 - minute;
