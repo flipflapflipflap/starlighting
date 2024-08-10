@@ -1,17 +1,4 @@
-// stolen from https://cytu.be/r/25_days_of_autism
-// removed majority of effects
-// danmaku implementation uses someone else's modification of 25day's nico nico nii 
-// user interface, chat icons, stream countdown, and 
-//		video times kept from 25days (slightly modified)
-// probably a lot of junk in here that could be cleaned up, but I've 
-//		never worked with javascript before, and getting just this far
-//		was a pain. I'll try to come back later and fix things up.
-// also, something's wrong with the message history when the page loads up,
-//		but I can't figure out a solution. Seems to work fine during runtime though
-//		
-//
-
-
+// stolen/modified from https://cytu.be/r/25_days_of_autism
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -2264,26 +2251,66 @@ if (Math.abs(timeDiff) < 1000) {
 
 
 function countdown (element) {
-	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayoffset1 = 1,  dayoffset2 = 8,  timeoffset = 12, temp, isStarlighting = false, JuneHour1 = 0, JuneHour2 = 0, starttime = 19;
+	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0;
+	
+	var dayoffset1 = 1,    dayoffset2 =  8;
+	var dayoffset1Pst = 7, dayoffset2Pst =  14;
+	var monthoffset = 6;
+	
+
+	var timeoffset = 12, temp, isStreaming = false, starttime = 19,hourDiff;
+	
+	var chosenYear = 2025;
+	
+	var daysInYear, dayOfYear, day2, numOfDays;
+	var D;
+	
+	var leapPreYear = Number((new Date(chosenYear    ,1,29)).getMonth() == 1);
+	var leapPstYear = Number((new Date(chosenYear + 1,1,29)).getMonth() == 1);
+	
+	var monthPreNumbers = [0,31,58+leapPreYear,89+leapPreYear,119+leapPreYear,150+leapPreYear,180+leapPreYear,211+leapPreYear,242+leapPreYear,272+leapPreYear,303+leapPreYear,333+leapPreYear];
+	var monthPstNumbers = [0,31,58+leapPstYear,89+leapPstYear,119+leapPstYear,150+leapPstYear,180+leapPstYear,211+leapPstYear,242+leapPstYear,272+leapPstYear,303+leapPstYear,333+leapPstYear];
+	
+	
+	var chosenDay1 = monthPreNumbers[monthoffset-1] + dayoffset1;
+	var chosenDay1Pst = monthPstNumbers[monthoffset-1] + dayoffset1Pst;
+
+	var chosenDay2 = monthPreNumbers[monthoffset-1] + dayoffset2;
+	
+	
+	var currentDay;
+	
+	
+	
 	//var month = 0, day = 0, hour = 0, minute = 0, seconds = 0;
-	element.append('<h3 id="countdowntitle" align="center">Countdown to June</h3>');
-	element.append('<h1 id="countdown" align="center">' + Month + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds + '</h1>');
+	element.append('<h3 id="countdowntitle" align="center">Starlighting in:</h3>');
+	element.append('<h1 id="countdown" align="center">'  + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds + '</h1>');
 
 	var fieldNameElement = document.getElementById('countdowntitle');
 
 	setInterval(function () { //updates every second
 		time();
-		Starlighting();
+		Streaming();
 		make();
 	}, 1000);
 
 	function daysInMonth(month,year) {
 		return new Date(year, month, 0).getDate();
 	}
+	
+	function dayDiff(chosenday,chosendaypst){
+		var dt;
+		if(chosenYear >= D.getUTCFullYear()) dt = chosenday - currentDay;
+		else dt = chosendaypst - currentDay;
+
+		if(dt < 10) dt = '0' + dt;
+		
+		return dt;
+	}
 
 	function time() { //does the time work
-		var D = new Date(new Date().getTime() - timeDiff);
 		var year, month, day, hour, minute, second;
+		D = new Date(new Date().getTime() - timeDiff);
 		//var offset = -300; //desired offset from UTC in minutes. EST: -300, EDT: -240
 
 		//D.setMinutes(D.getUTCMinutes() + offset);
@@ -2293,85 +2320,70 @@ function countdown (element) {
 		hour = D.getUTCHours();
 		minute = D.getUTCMinutes();
 		second = D.getUTCSeconds();
+		
+		
+		currentDay = Number(monthPreNumbers[D.getUTCMonth()] + D.getUTCDate());
+		
+		
+		hourDiff = starttime - hour -1;	
+		if(hourDiff < 0){
+			hourDiff += 24;
+		}		
 
-		Month = 6 - month;
+		// Is month really needed? Take it out later
+		Month = monthoffsetMP - month;
 		Day = daysInMonth(month, year) - day;
 		Hour = 23 - hour;
-		JuneHour1 = (dayoffset1-day)*24 - hour + starttime -1;
-		JuneHour2 = (dayoffset2-day)*24 - hour + starttime -1;
 		Minute = 59 - minute;
 		Seconds = 59 - second;
 	}
 
-	function Starlighting() {
-		if (isStarlighting === false && Hour === (24-timeoffset) && Month === 0 && Day >= 6) {
-			isStarlighting = true;
+	function Streaming() {
+		if (isStreaming === false && Hour === (24-timeoffset) && Month === 0 && Day >= 6) {
+			isStreaming = true;
 		}
-		if (isStarlighting === true && Hour !== (24-timeoffset)) {
-			isStarlighting = false;
+		if (isStreaming === true && Hour !== (24-timeoffset)) {
+			isStreaming = false;
 		}
 	}
 
 	function make() { //checks the numbers then applies
-		if(Month < 10 && Month >= 0) Month = '0' + Month;
-		if(Day < 10) Day = '0' + Day;
-		if(Hour < 10) Hour = '0' + Hour;
+		var hT = hourDiff;
+		
+		if(hourDiff < 10) hT = '0' + hT;
 		if(Minute < 10) Minute = '0' + Minute;
 		if(Seconds < 10) Seconds = '0' + Seconds;//these lines add a 0 if it's less than 10
-
+	
 		//check if time is reasonable. if not gtfo
 		if (Hour > 23 || Minute > 59) {
-			console.error('Countdown error: time is incorrect ' + Hour + ' : ' + Minute + ' : ' + Seconds);
-		} else if (Month > 0) {
-			cdtext = Month - 1 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
+			console.error('Countdown error: time is incorrect ' + Minute + ' : ' + Seconds);
 		}
-		else if (Month == 0) {
-			if (30 - dayoffset2 > Day) {
-						fieldNameElement.innerHTML = "Countdown to (next) June:";
-						cdtext = 11 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-					} else if (((30 - dayoffset1 == Day) && Hour < (24 - starttime)) || ((30 - dayoffset2 == Day) && Hour < (24 - starttime))) {
-						fieldNameElement.innerHTML = "";
-						cdtext = "THE TIME HAS COME";
-					} else if (30 - dayoffset1 <= Day){
-							temp = dayoffset1 - day;
-							temp = '0' + temp;
-							fieldNameElement.innerHTML = "Starlighting in:";
-							cdtext = JuneHour1 + ' : ' + Minute + ' : ' + Seconds;
-					}
-					 else {
-							temp = dayoffset2 - day;
-							temp = '0' + temp;
-							fieldNameElement.innerHTML = "Starlighting to resume in:";
-							cdtext = JuneHour2 + ' : ' + Minute + ' : ' + Seconds;
-					}			
-			
+		else if (currentDay <= chosenDaP1 && chosenYear <= D.getUTCFullYear() ) {
+			if (currentDay == chosenDay1 && starttime - D.getUTCHours() -1 < 0) {
+					fieldNameElement.innerHTML = "";
+					cdtext = "P O S I T I O N   0";
+				}
+			else {
+					cdtext = dayDiff(chosenDayMP1,chosenDayMP1) + ' : ' + hT + ' : ' + Minute + ' : ' + Seconds;
+				}
 		}
+		else if (currentDay <= chosenDay2 && chosenYear <= D.getUTCFullYear() ) {
+			if (currentDay == chosenDay2 && starttime - D.getUTCHours() -1 < 0) {
+					fieldNameElement.innerHTML = "";
+					cdtext = "P O S I T I O N   0";
+				}
+			else {
+					fieldNameElement.innerHTML = "Starlighting to resume in:";
+					cdtext = dayDiff(chosenDay2,chosenDay2) + ' : ' + hT + ' : ' + Minute + ' : ' + Seconds;
+				}
+		}
+		
 		else {
-			if (Month == -1){
-			cdtext = 10 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-			}
-
-			else if (Month == -2){
-			cdtext = 09 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-			}
-
-			else if (Month == -3){
-			cdtext = 08 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-			}
-
-			else if (Month == -4){
-			cdtext = 07 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-			}
-
-			else if (Month == -5){
-			cdtext = 06 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-			}
-																					
-			else{
-			cdtext = 05 + ' : ' + Day + ' : ' + Hour + ' : ' + Minute + ' : ' + Seconds;
-
-			}
+			fieldNameElement.innerHTML = "See you next year...";
+			if(chosenYear > D.getUTCFullYear()) cdtext = Number(chosenDayMP1 + 365 + Number((new Date(D.getUTCFullYear(),1,29)).getMonth() == 1) - currentDay) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;		
+			else cdtext = Number(chosenDay1Pst + 365 + leapPreYear - currentDay +1) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;
 			
+		
 		}
 
 			document.getElementById("countdown").textContent = cdtext;
@@ -2398,6 +2410,7 @@ socket.on('setMotd', function (data) {
 		}
 	}
 });
+
 
 
 
