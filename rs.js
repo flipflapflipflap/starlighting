@@ -2253,8 +2253,8 @@ if (Math.abs(timeDiff) < 1000) {
 function countdown (element) {
 	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0;
 	
-	var dayoffset1 = 1,    dayoffset2 =  8;
-	var dayoffset1Pst = 7, dayoffset2Pst =  14;
+	var dayoffset1 = 7,    dayoffset2 =  14;
+	var dayoffset1Pst = 13, dayoffset2Pst =  20;
 	var monthoffset = 6;
 	
 
