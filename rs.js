@@ -2358,13 +2358,13 @@ function countdown (element) {
 		if (Hour > 23 || Minute > 59) {
 			console.error('Countdown error: time is incorrect ' + Minute + ' : ' + Seconds);
 		}
-		else if (currentDay <= chosenDaP1 && chosenYear <= D.getUTCFullYear() ) {
+		else if (currentDay <= chosenDay1 && chosenYear <= D.getUTCFullYear() ) {
 			if (currentDay == chosenDay1 && starttime - D.getUTCHours() -1 < 0) {
 					fieldNameElement.innerHTML = "";
 					cdtext = "P O S I T I O N   0";
 				}
 			else {
-					cdtext = dayDiff(chosenDayMP1,chosenDayMP1) + ' : ' + hT + ' : ' + Minute + ' : ' + Seconds;
+					cdtext = dayDiff(chosenDay1,chosenDay1) + ' : ' + hT + ' : ' + Minute + ' : ' + Seconds;
 				}
 		}
 		else if (currentDay <= chosenDay2 && chosenYear <= D.getUTCFullYear() ) {
