@@ -2387,7 +2387,7 @@ function countdown (element) {
 		
 		else {
 			fieldNameElement.innerHTML = "See you next year...";
-			if(chosenYear > D.getUTCFullYear()) cdtext = Number(chosenDay1 + 365 + Number((new Date(chosenYear -1,1,29)).getMonth() == 1) - currentDay - dayChange) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;		
+			if(chosenYear > D.getUTCFullYear()) cdtext = Number(chosenDay1 + 365 - Number((new Date(chosenYear -1,1,29)).getMonth() == 1) - currentDay - dayChange) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;		
 			else cdtext = Number(chosenDay1Pst + 365 + leapPreYear - currentDay - dayChange) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;
 			
 		
