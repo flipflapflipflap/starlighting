@@ -2251,7 +2251,7 @@ if (Math.abs(timeDiff) < 1000) {
 
 
 function countdown (element) {
-	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0;
+	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayChange  = 0;
 	
 	var dayoffset1 = 7,    dayoffset2 =  14;
 	var dayoffset1Pst = 13, dayoffset2Pst =  20;
@@ -2302,7 +2302,9 @@ function countdown (element) {
 		var dt;
 		if(chosenYear >= D.getUTCFullYear()) dt = chosenday - currentDay;
 		else dt = chosendaypst - currentDay;
-
+		
+		dt -= dayChange;
+		
 		if(dt < 10) dt = '0' + dt;
 		
 		return dt;
@@ -2328,7 +2330,12 @@ function countdown (element) {
 		hourDiff = starttime - hour -1;	
 		if(hourDiff < 0){
 			hourDiff += 24;
+			dayChange = 1;
 		}		
+		else
+		{
+			dayChange = 0;
+		}
 
 		// Is month really needed? Take it out later
 		Month = monthoffset - month;
@@ -2380,8 +2387,8 @@ function countdown (element) {
 		
 		else {
 			fieldNameElement.innerHTML = "See you next year...";
-			if(chosenYear > D.getUTCFullYear()) cdtext = Number(chosenDay1 + 365 + Number((new Date(D.getUTCFullYear(),1,29)).getMonth() == 1) - currentDay) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;		
-			else cdtext = Number(chosenDay1Pst + 365 + leapPreYear - currentDay +1) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;
+			if(chosenYear > D.getUTCFullYear()) cdtext = Number(chosenDay1 + 365 + Number((new Date(D.getUTCFullYear(),1,29)).getMonth() == 1) - currentDay - dayChange) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;		
+			else cdtext = Number(chosenDay1Pst + 365 + leapPreYear - currentDay + 1 - dayChange) + ' : ' + hourDiff + ' : ' + Minute + ' : ' + Seconds;
 			
 		
 		}
