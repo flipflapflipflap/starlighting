@@ -181,6 +181,8 @@ footer {padding-bottom:5px}
 .teamnana::before{background:url('./Images/nana.png');}
 .teamfutaba::before{background:url('./Images/futaba.png');}
 .teamkaoruko::before{background:url('./Images/kaoruko.png');}
+.teammrwhite::before{background:url('./Images/mrwhite.png');}
+.teamsuzdalcat::before{background:url('./Images/suzdalcat.png');}
 
 .username::before{
 	content:"AA";
