@@ -183,7 +183,7 @@ footer {padding-bottom:5px}
 .teamkaoruko::before{background:url('./Images/kaoruko.png');}
 .teammrwhite::before{background:url('./Images/mrwhite.png');}
 .teamsuzdalcat::before{background:url('./Images/suzdalcat.png');}
-.teamjudy::before{background:url('./Images/judy.png');}}
+.teamjudy::before{background:url('./Images/judy.png');}
 
 .username::before{
 	content:"AA";
