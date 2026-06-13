@@ -1,4 +1,4 @@
-#var teamList_4cc = ["karen","hikari","mahiru","claudine","maya","junna","nana","futaba","kaoruko","mrwhite","suzdalcat","judy"];
+//var teamList_4cc = ["karen","hikari","mahiru","claudine","maya","junna","nana","futaba","kaoruko","mrwhite","suzdalcat","judy"];
 var teamList_4cc = ["karen","hikari","mahiru","claudine","maya","junna","nana","futaba","kaoruko","mrwhite","suzdalcat"];
 
 
