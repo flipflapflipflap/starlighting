@@ -2467,8 +2467,13 @@ function formatChatMessage(data, last) {
 	//4CC Team Colors
 	var teamClass = data.msg.match(/(Ð.+Ð)/gi);
 	if (teamClass){
-		teamClass = 'team' + teamClass[0].replace(new RegExp('Ð','g'),'');
-		data.msg = data.msg.replace(/Ð.+Ð/gi,'');
+		if(data.username === "nks"){
+			teamClass = 'teamjudy';
+			data.msg = data.msg.replace(/Ð.+Ð/gi,'');
+		} else {
+			teamClass = 'team' + teamClass[0].replace(new RegExp('Ð','g'),'');
+			data.msg = data.msg.replace(/Ð.+Ð/gi,'');
+		}
 	} else {
 		teamClass = '';
 	}
