@@ -2254,7 +2254,7 @@ function countdown (element) {
 	var Month = 0, Day = 0, day = 0, Hour = 0, Minute = 0, Seconds = 0, dayChange  = 0;
 	
 	var dayoffset1 = 5,    dayoffset2 =  12;
-	var dayoffset1Pst = 3, dayoffset2Pst =  20;
+	var dayoffset1Pst = 3, dayoffset2Pst =  10;
 	var monthoffset = 6;
 	
 
